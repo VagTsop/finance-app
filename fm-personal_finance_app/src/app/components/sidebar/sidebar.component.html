@@ -1,0 +1,20 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <img src="assets/logo/logo-small.svg" alt="Finance" class="sidebar-logo" />
+    <h1>Finance</h1>
+  </div>
+
+  <ul class="sidebar-nav">
+    <li *ngFor="let item of items">
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+
+  <button class="sidebar-logout" (click)="logout()">Log out</button>
+</nav>

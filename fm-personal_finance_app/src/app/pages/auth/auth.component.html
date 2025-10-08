@@ -1,0 +1,40 @@
+<div class="auth">
+  <div class="auth-card card">
+    <img
+      src="assets/illustrations/illustration-authentication.svg"
+      alt="Authentication illustration"
+      class="auth-illustration"
+    />
+    <h1>{{ headline }}</h1>
+    <p class="text-muted">
+      Manage your spending, track recurring bills and keep your savings pots growing.
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="email" placeholder="you@example.com" />
+        <span class="field-error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+          Enter a valid email
+        </span>
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input type="password" formControlName="password" placeholder="Minimum 6 characters" />
+        <span class="field-error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          Password must be at least 6 characters long
+        </span>
+      </label>
+
+      <button type="submit">{{ buttonLabel }}</button>
+    </form>
+
+    <p class="auth-alternative">
+      {{ mode() === 'login' ? "Don't have an account?" : 'Already registered?' }}
+      <button type="button" (click)="navigateToAlternative()">
+        {{ mode() === 'login' ? 'Create one' : 'Log in' }}
+      </button>
+    </p>
+  </div>
+</div>
