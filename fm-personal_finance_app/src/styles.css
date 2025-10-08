@@ -7,16 +7,16 @@
 
 :root {
   color-scheme: light;
-  --color-background: #f4f1ed;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f6f0e7;
-  --color-surface-alt: #fef9f1;
+  --color-background: #0e1116;
+  --color-surface: #151b23;
+  --color-surface-subtle: #1e252f;
+  --color-surface-alt: #ffffff;
   --color-primary: #277c78;
   --color-secondary: #82c9d7;
-  --color-text: #201f24;
-  --color-text-muted: rgba(32, 31, 36, 0.6);
-  --color-border: rgba(32, 31, 36, 0.12);
-  --shadow-elevated: 0 28px 60px rgba(32, 31, 36, 0.08);
+  --color-text: #f9fafc;
+  --color-text-muted: rgba(249, 250, 252, 0.7);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -42,26 +42,11 @@ button {
   font: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  color: var(--color-text);
-}
-
-p {
-  margin: 0;
-  color: var(--color-text-muted);
-}
-
 .card {
   background: var(--color-surface);
-  border: none;
-  border-radius: 20px;
-  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
   box-shadow: var(--shadow-elevated);
 }
 
@@ -79,7 +64,7 @@ p {
 .table td {
   text-align: left;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .badge {
@@ -88,22 +73,17 @@ p {
   gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(39, 124, 120, 0.12);
-  color: var(--color-primary);
+  background: rgba(39, 124, 120, 0.16);
+  color: var(--color-secondary);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .highlight {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .text-muted {
   color: var(--color-text-muted);
-}
-
-img {
-  max-width: 100%;
-  display: block;
 }
