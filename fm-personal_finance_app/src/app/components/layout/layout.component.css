@@ -2,7 +2,7 @@
   display: grid;
   min-height: 100vh;
   grid-template-columns: 280px 1fr;
-  background: var(--color-background);
+  background: linear-gradient(120deg, #0e1116 0%, #161c26 60%, #0e1116 100%);
 }
 
 .layout-sidebar {
@@ -10,20 +10,12 @@
   top: 0;
   align-self: stretch;
   height: 100vh;
-  border-right: 1px solid var(--color-border);
-  background: var(--color-surface-subtle);
-  box-shadow: 24px 0 48px rgba(201, 185, 163, 0.18);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .layout-main {
-  padding: 48px 64px;
+  padding: 32px 48px;
   overflow-y: auto;
-  background: var(--color-background);
-}
-
-.layout-main > * {
-  max-width: 1120px;
-  margin: 0 auto;
 }
 
 @media (max-width: 1080px) {
@@ -34,9 +26,5 @@
   .layout-sidebar {
     position: static;
     height: auto;
-  }
-
-  .layout-main {
-    padding: 32px 24px 48px;
   }
 }
