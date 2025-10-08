@@ -1,30 +1,38 @@
 import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
+import tseslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import angular from "@angular-eslint/eslint-plugin";
+import angularTemplate from "@angular-eslint/eslint-plugin-template";
 
-export default tseslint.config(
-  { ignores: ["dist"] },
+export default [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ["**/*.{ts,tsx}"],
+    files: ["**/*.ts"],
+    ignores: ["**/node_modules/**", "dist/**"],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: tsParser,
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: import.meta.dirname,
+        sourceType: "module"
+      }
     },
     plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
+      "@typescript-eslint": tseslint,
+      "@angular-eslint": angular
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      ...js.configs.recommended.rules,
+      ...tseslint.configs["recommended-type-checked"].rules,
+      ...angular.configs.recommended.rules
+    }
+  },
+  {
+    files: ["**/*.html"],
+    plugins: {
+      "@angular-eslint/template": angularTemplate
     },
+    rules: {
+      ...angularTemplate.configs.recommended.rules
+    }
   }
-);
+];

@@ -1,0 +1,36 @@
+<section class="bills card">
+  <header class="bills-header">
+    <div>
+      <h1>Recurring bills</h1>
+      <p class="text-muted">Subscriptions, utilities and other repeating expenses.</p>
+    </div>
+    <div class="bills-total">
+      <p class="text-muted">Monthly total</p>
+      <span>{{ formatCurrency(total) }}</span>
+    </div>
+  </header>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Bill</th>
+        <th>Category</th>
+        <th>Next payment</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of bills()">
+        <td>
+          <div class="bills-payee">
+            <img [src]="bill.avatar" [alt]="bill.name" />
+            <span>{{ bill.name }}</span>
+          </div>
+        </td>
+        <td>{{ bill.category }}</td>
+        <td>{{ formatDate(bill.date) }}</td>
+        <td>{{ formatCurrency(Math.abs(bill.amount)) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,92 @@
+.overview-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.overview-header h1 {
+  font-size: clamp(36px, 3vw, 48px);
+  margin: 8px 0 0;
+}
+
+.overview-income-expense {
+  display: flex;
+  gap: 24px;
+}
+
+.overview-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.overview-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.overview-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.overview-progress {
+  display: grid;
+  gap: 8px;
+  width: 140px;
+}
+
+.overview-progress-bar {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.overview-progress-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: var(--progress);
+  background: linear-gradient(90deg, #277c78, #82c9d7);
+}
+
+.overview-table {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.overview-table li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.overview-transactions span {
+  font-weight: 600;
+}
+
+.overview-transactions span.positive {
+  color: #7dd87d;
+}
+
+.overview-categories span:last-child {
+  color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .overview-income-expense {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

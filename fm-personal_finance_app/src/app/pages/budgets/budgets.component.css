@@ -1,0 +1,26 @@
+.budgets {
+  display: grid;
+  gap: 24px;
+}
+
+.budgets header h1 {
+  margin: 0;
+}
+
+.budgets-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.budgets-progress {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.budgets-progress-bar {
+  height: 100%;
+  width: var(--progress);
+  background: linear-gradient(90deg, #277c78, #82c9d7);
+}

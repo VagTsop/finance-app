@@ -1,0 +1,102 @@
+<section class="overview">
+  <header class="overview-header">
+    <div>
+      <p class="text-muted">Current balance</p>
+      <h1>{{ formatCurrency(balance().current) }}</h1>
+    </div>
+    <div class="overview-income-expense">
+      <div>
+        <p class="text-muted">Income</p>
+        <span class="highlight">{{ formatCurrency(balance().income) }}</span>
+      </div>
+      <div>
+        <p class="text-muted">Expenses</p>
+        <span>{{ formatCurrency(balance().expenses) }}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="grid overview-grid">
+    <article class="card">
+      <header>
+        <h2>Budgets</h2>
+        <p class="text-muted">Tracking the categories you spend the most on.</p>
+      </header>
+      <ul class="overview-list">
+        <li *ngFor="let budget of budgets()">
+          <div>
+            <h3>{{ budget.category }}</h3>
+            <p class="text-muted">{{ formatCurrency(budget.spent) }} of {{ formatCurrency(budget.maximum) }}</p>
+          </div>
+          <div class="overview-progress">
+            <div
+              class="overview-progress-bar"
+              [style.--progress]="budget.percentage + '%'"
+            ></div>
+            <span>{{ budget.percentage }}%</span>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <header>
+        <h2>Savings pots</h2>
+        <p class="text-muted">Keep an eye on your goals.</p>
+      </header>
+      <ul class="overview-list">
+        <li *ngFor="let pot of pots()">
+          <div>
+            <h3>{{ pot.name }}</h3>
+            <p class="text-muted">{{ formatCurrency(pot.total) }} saved of {{ formatCurrency(pot.target) }}</p>
+          </div>
+          <span>{{ pot.progress }}%</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <header class="overview-card-header">
+        <div>
+          <h2>Recurring bills</h2>
+          <p class="text-muted">{{ formatCurrency(recurringTotal()) }} this month</p>
+        </div>
+      </header>
+      <ul class="overview-table">
+        <li *ngFor="let bill of recurringBills()">
+          <span>{{ bill.name }}</span>
+          <span>{{ formatCurrency(Math.abs(bill.amount)) }}</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="card overview-transactions">
+      <header>
+        <h2>Recent activity</h2>
+      </header>
+      <ul class="overview-table">
+        <li *ngFor="let transaction of recentTransactions()">
+          <div>
+            <p>{{ transaction.name }}</p>
+            <p class="text-muted">{{ transaction.category }}</p>
+          </div>
+          <span [class.positive]="transaction.amount > 0">
+            {{ formatCurrency(transaction.amount) }}
+          </span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="card overview-categories">
+      <header>
+        <h2>Category totals</h2>
+      </header>
+      <ul class="overview-table">
+        <li *ngFor="let category of categoryTotals()">
+          <span>{{ category.category }}</span>
+          <span>{{ formatCurrency(category.total) }}</span>
+        </li>
+      </ul>
+    </article>
+  </section>
+</section>
