@@ -1,0 +1,32 @@
+<section class="transactions card">
+  <header>
+    <h1>Transactions</h1>
+    <p class="text-muted">A complete list of your income and spending.</p>
+  </header>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Payee</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions()">
+        <td>
+          <div class="transactions-payee">
+            <img [src]="transaction.avatar" [alt]="transaction.name" />
+            <span>{{ transaction.name }}</span>
+          </div>
+        </td>
+        <td>{{ transaction.category }}</td>
+        <td>{{ formatDate(transaction.date) }}</td>
+        <td [class.positive]="transaction.amount > 0">
+          {{ formatCurrency(transaction.amount) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

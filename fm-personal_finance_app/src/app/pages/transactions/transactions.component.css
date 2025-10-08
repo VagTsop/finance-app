@@ -1,0 +1,24 @@
+.transactions {
+  display: grid;
+  gap: 24px;
+}
+
+.transactions header h1 {
+  margin: 0;
+}
+
+.transactions-payee {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.transactions-payee img {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.table td.positive {
+  color: #7dd87d;
+}
