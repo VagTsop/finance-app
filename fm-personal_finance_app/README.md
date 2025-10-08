@@ -67,15 +67,6 @@ Users should be able to:
 - highcharts-react-official.
 - @floating-ui/dom
 
-### What I learned
 
-During this project, I learned the importance of state management in React applications, particularly using Redux for efficient data handling. I also gained a deeper understanding of how to implement responsive design using CSS Grid and Flexbox, ensuring a seamless user experience across different devices.
 
-## Author
 
-- Linkedin - [Ahmed Elbohoty](www.linkedin.com/in/ahmed-elbohoty)
-- Frontend Mentor - [Ahmed Elbohoty](https://www.frontendmentor.io/profile/AhmedElbohoty)
-
-# Demo link
-
-https://www.loom.com/share/67d261e346c246bca9a4fddcdca0b7fb?sid=d89c892d-60bd-487e-b80e-dcd333e9ea39
