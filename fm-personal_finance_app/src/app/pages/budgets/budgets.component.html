@@ -1,0 +1,22 @@
+<section class="budgets">
+  <header>
+    <h1>Budgets</h1>
+    <p class="text-muted">Track limits, spending and remaining balance per category.</p>
+  </header>
+
+  <div class="grid budgets-grid">
+    <article class="card" *ngFor="let budget of budgets()">
+      <header>
+        <span class="badge">{{ budget.category }}</span>
+        <h2>{{ formatCurrency(budget.maximum) }} limit</h2>
+      </header>
+      <p class="text-muted">
+        {{ formatCurrency(budget.spent) }} spent · {{ formatCurrency(budget.remaining) }} remaining
+      </p>
+      <div class="budgets-progress">
+        <div class="budgets-progress-bar" [style.--progress]="budget.percentage + '%'">
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

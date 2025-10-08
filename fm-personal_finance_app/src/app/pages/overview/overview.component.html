@@ -1,0 +1,123 @@
+<section class="overview">
+  <header class="overview-heading">
+    <h1>Overview</h1>
+    <p class="text-muted">See how your money moves across accounts, budgets, and bills.</p>
+  </header>
+
+  <div class="overview-grid">
+    <article class="card balance-card">
+      <div class="balance-card__body">
+        <p class="balance-card__label">Current balance</p>
+        <p class="balance-card__amount">{{ formatCurrency(balance().current) }}</p>
+      </div>
+      <dl class="balance-card__stats">
+        <div>
+          <dt>Income</dt>
+          <dd>{{ formatCurrency(balance().income) }}</dd>
+        </div>
+        <div>
+          <dt>Expenses</dt>
+          <dd>{{ formatCurrency(balance().expenses) }}</dd>
+        </div>
+      </dl>
+    </article>
+
+    <article class="card pots-card">
+      <header class="card-heading">
+        <div>
+          <p class="text-muted">Pots</p>
+          <h2>{{ formatCurrency(potsSummary().totalSaved) }}</h2>
+        </div>
+        <span class="card-subtitle">Saved of {{ formatCurrency(potsSummary().totalTarget) }}</span>
+      </header>
+      <div class="pots-progress">
+        <div class="pots-progress__track">
+          <div class="pots-progress__value" [style.width.%]="potsSummary().progress"></div>
+        </div>
+        <span>{{ potsSummary().progress }}%</span>
+      </div>
+      <ul class="pots-list">
+        <li *ngFor="let pot of topPots()">
+          <span class="pots-marker" [style.background]="pot.theme"></span>
+          <div>
+            <p>{{ pot.name }}</p>
+            <span class="text-muted">{{ formatCurrency(pot.total) }} saved</span>
+          </div>
+          <span class="pots-percentage">{{ pot.progress }}%</span>
+        </li>
+      </ul>
+      <a routerLink="/pots" class="card-link card-footer-link">View all pots</a>
+    </article>
+
+    <article class="card budgets-card">
+      <header class="card-heading">
+        <div>
+          <p class="text-muted">Budgets</p>
+          <h2>{{ formatCurrency(budgetHighlights().totalSpent) }}</h2>
+        </div>
+        <span class="card-subtitle">Spent of {{ formatCurrency(budgetHighlights().totalMaximum) }}</span>
+      </header>
+      <div class="budgets-body">
+        <div class="budgets-chart">
+          <div class="budgets-chart__ring" [style.background]="budgetHighlights().gradient"></div>
+          <div class="budgets-chart__center">
+            <p class="text-muted">Remaining</p>
+            <strong>{{ formatCurrency(budgetHighlights().remaining) }}</strong>
+          </div>
+        </div>
+        <ul class="budgets-legend">
+          <li *ngFor="let budget of budgetHighlights().items">
+            <span class="budgets-dot" [style.background]="budget.theme"></span>
+            <div>
+              <p>{{ budget.category }}</p>
+              <span class="text-muted">{{ budget.percentage }}% of {{ formatCurrency(budget.maximum) }}</span>
+            </div>
+            <strong>{{ formatCurrency(budget.spent) }}</strong>
+          </li>
+        </ul>
+      </div>
+      <a routerLink="/budgets" class="card-link card-footer-link">View budgets</a>
+    </article>
+
+    <article class="card recurring-card">
+      <header class="card-heading">
+        <div>
+          <p class="text-muted">Recurring bills</p>
+          <h2>{{ formatCurrency(recurringTotal()) }}</h2>
+        </div>
+        <span class="card-subtitle">Due this month</span>
+      </header>
+      <ul class="recurring-list">
+        <li *ngFor="let bill of recurringBills()">
+          <div>
+            <p>{{ bill.name }}</p>
+            <span class="text-muted">{{ bill.category }}</span>
+          </div>
+          <strong>{{ formatCurrency(Math.abs(bill.amount)) }}</strong>
+        </li>
+      </ul>
+      <a routerLink="/recurring-bills" class="card-link card-footer-link">Manage bills</a>
+    </article>
+
+    <article class="card transactions-card">
+      <header class="card-heading">
+        <h2>Transactions</h2>
+        <a routerLink="/transactions" class="card-link">View all</a>
+      </header>
+      <ul class="transactions-list">
+        <li *ngFor="let transaction of recentTransactions()">
+          <div class="transactions-person">
+            <img [src]="transaction.avatar" [alt]="transaction.name" />
+            <div>
+              <p>{{ transaction.name }}</p>
+              <span class="text-muted">{{ transaction.category }}</span>
+            </div>
+          </div>
+          <span [class.positive]="transaction.amount > 0">
+            {{ formatCurrency(transaction.amount) }}
+          </span>
+        </li>
+      </ul>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+.bills {
+  display: grid;
+  gap: 24px;
+}
+
+.bills-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.bills-total {
+  text-align: right;
+}
+
+.bills-total span {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.bills-payee {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bills-payee img {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
